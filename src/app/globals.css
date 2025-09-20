@@ -1,0 +1,393 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Game UI Utilities */
+  .game-card {
+    @apply bg-game-card hover:bg-game-card-hover transition-all duration-200 rounded-lg shadow-sm hover:shadow-md;
+  }
+
+  .game-button-primary {
+    @apply bg-game-play-button hover:bg-game-play-button-hover text-primary-foreground font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105 active:scale-95;
+  }
+
+  .game-button-secondary {
+    @apply bg-secondary hover:bg-secondary-hover text-secondary-foreground font-medium px-4 py-2 rounded-md transition-all duration-200 border border-border hover:border-border-strong;
+  }
+
+  /* Layout Utilities */
+  .container-game {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl;
+  }
+
+  .section-spacing {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+
+  .content-spacing {
+    @apply space-y-6 sm:space-y-8;
+  }
+
+  /* Typography Utilities */
+  .heading-hero {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight;
+  }
+
+  .heading-section {
+    @apply text-2xl sm:text-3xl font-bold text-foreground;
+  }
+
+  .heading-card {
+    @apply text-lg sm:text-xl font-semibold text-foreground;
+  }
+
+  .text-body {
+    @apply text-base text-muted-foreground leading-relaxed;
+  }
+
+  .text-small {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Interactive States */
+  .focus-ring {
+    @apply focus:outline-none;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-1;
+  }
+
+  /* Glass Effect Utilities */
+  .glass-light {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50;
+  }
+
+  .glass-medium {
+    @apply bg-card/90 backdrop-blur-md border border-border/60 shadow-lg;
+  }
+
+  /* Background Utilities */
+  .bg-header {
+    background: var(--bg-header);
+  }
+
+  .bg-body {
+    background: var(--bg-body);
+    min-height: 100vh;
+  }
+
+  .bg-footer {
+    background: hsl(var(--footer-bg));
+    color: hsl(var(--footer-foreground));
+  }
+
+  .text-footer-muted {
+    color: hsl(var(--footer-muted));
+  }
+
+  /* Gradient Utilities */
+  .gradient-game {
+    /* Heroic sweep from crimson to sunlit sand */
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--accent-bright)) 100%
+    );
+  }
+
+  .gradient-soft {
+    /* Subtle surface wash for sections/cards */
+    background: linear-gradient(
+      135deg,
+      hsl(52 70% 96%) 0%,
+      hsl(52 60% 92%) 100%
+    );
+  }
+
+  /* EXTRA gradients you can use anywhere */
+  .gradient-hero {
+    /* layered: deep indigo vignette + crimson→sand sweep */
+    background:
+      radial-gradient(120% 160% at 0% 0%, hsl(253 29% 19%) 0%, transparent 45%),
+      linear-gradient(135deg, hsl(358 99% 59%) 0%, hsl(52 70% 82%) 100%);
+  }
+
+  .gradient-emerald {
+    /* emerald play vibe with subtle light */
+    background: linear-gradient(
+      135deg,
+      hsl(158 74% 37%) 0%,
+      hsl(158 60% 55%) 60%,
+      hsl(52 70% 90%) 100%
+    );
+  }
+
+  .gradient-card {
+    /* card highlight using indigo→sand for depth */
+    background: linear-gradient(
+      180deg,
+      hsl(253 29% 22%) 0%,
+      hsl(253 29% 18%) 30%,
+      hsl(52 70% 16% / 12%) 100%
+    );
+  }
+
+  .gradient-cta {
+    /* punchy CTA: crimson→gold */
+    background: linear-gradient(
+      135deg,
+      hsl(358 99% 59%) 0%,
+      hsl(28 95% 60%) 100%
+    );
+  }
+}
+
+/* [ANCHOR: custom-styles] */
+/* Fullscreen Game Styles */
+:fullscreen,
+::backdrop {
+  background-color: black;
+}
+
+*:fullscreen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+*:fullscreen > * {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+*:fullscreen iframe {
+  width: 100vw !important;
+  height: 100vh !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* WebKit/Blink browsers */
+*:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+*:-webkit-full-screen > * {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+*:-webkit-full-screen iframe {
+  width: 100vw !important;
+  height: 100vh !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Mozilla Firefox */
+*:-moz-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+*:-moz-full-screen > * {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+*:-moz-full-screen iframe {
+  width: 100vw !important;
+  height: 100vh !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Additional custom styles will be added here */
+
+/* Theme variables will be managed through Tailwind config */
+
+:root {
+  /* Light Theme — inspired by game palette */
+  --background: 52 70% 97%; /* soft sand wash */
+  --foreground: 253 29% 16%; /* deep indigo ink */
+
+  /* Visible Smooth Background Gradients */
+  --bg-header: linear-gradient(
+    135deg,
+    hsl(51, 72%, 94%) 0%,
+    hsl(52 60% 92%) 100%
+  );
+  --bg-body: linear-gradient(135deg, hsl(52 68% 98%) 0%, hsl(52 58% 95%) 100%);
+
+  /* Dark Footer System */
+  --footer-bg: 253 29% 12%; /* deep indigo */
+  --footer-foreground: 220 15% 88%;
+  --footer-muted: 220 10% 65%;
+
+  /* Card & Surface System */
+  --card: 0 0% 100%;
+  --card-foreground: 253 29% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 253 29% 16%;
+
+  /* Brand / Accents */
+  --primary: 358 99% 59%; /* FE3139 — crimson */
+  --primary-foreground: 0 0% 100%;
+  --primary-hover: 358 90% 52%;
+  --primary-light: 358 95% 92%;
+
+  --secondary: 52 70% 92%; /* sand tint */
+  --secondary-foreground: 52 40% 22%;
+  --secondary-hover: 52 70% 88%;
+
+  /* Success / Play */
+  --success: 158 45% 90%; /* emerald tint */
+  --success-foreground: 158 60% 22%;
+  --success-bright: 158 74% 37%; /* 19A472 core */
+
+  /* Neutrals */
+  --muted: 252 15% 94%;
+  --muted-foreground: 252 10% 42%;
+  --muted-dark: 252 14% 86%;
+
+  /* Accent (golden highlight from sand) */
+  --accent: 52 80% 90%;
+  --accent-foreground: 40 70% 22%;
+  --accent-bright: 52 70% 82%; /* F1E8B1 */
+
+  /* Warning & Error */
+  --warning: 46 100% 88%;
+  --warning-foreground: 30 95% 22%;
+  --destructive: 358 99% 95%;
+  --destructive-foreground: 358 80% 34%;
+
+  /* Star Rating System */
+  --star: 28 95% 60%; /* warm gold/amber color */
+  --star-foreground: 0 0% 100%;
+
+  /* Border & Input System */
+  --border: 48 20% 82%;
+  --border-strong: 48 22% 72%;
+  --input: 52 40% 97%;
+  --input-border: 48 20% 80%;
+  --ring: 253 29% 16%; /* dark indigo focus ring */
+
+  /* Game-specific Colors */
+  --game-card: 52 70% 97%; /* sand paper */
+  --game-card-hover: 52 70% 94%;
+  --play-button: 158 74% 37%; /* emerald play */
+  --play-button-hover: 158 70% 33%;
+
+  /* Layout & Spacing */
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  /* Elevation/Shadow System */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl:
+    0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  /* Deep Game Dark — anchored by 29233F */
+  --background: 253 29% 10%;
+  --foreground: 52 40% 94%;
+
+  --card: 253 29% 14%;
+  --card-foreground: 52 40% 94%;
+  --popover: 253 29% 14%;
+  --popover-foreground: 52 40% 94%;
+
+  /* Keep brand punchy in dark */
+  --primary: 358 95% 58%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 253 22% 18%;
+  --secondary-foreground: 52 60% 92%;
+
+  --muted: 253 20% 18%;
+  --muted-foreground: 52 20% 76%;
+
+  --accent: 52 70% 28%;
+  --accent-foreground: 52 80% 86%;
+
+  --destructive: 358 80% 44%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Star Rating System - Dark Mode */
+  --star: 28 95% 65%; /* slightly brighter gold for dark mode */
+  --star-foreground: 253 29% 10%;
+
+  --border: 253 18% 24%;
+  --input: 253 18% 24%;
+  --ring: 52 40% 70%;
+
+  /* Optional chart hues retained */
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-nunito), system-ui, sans-serif;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography improvements */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-nunito), system-ui, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  /* Removed focus ring - no outline on selection */
+  :focus-visible {
+    outline: none;
+  }
+}
