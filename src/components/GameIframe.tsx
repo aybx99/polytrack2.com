@@ -1,13 +1,11 @@
 'use client';
 
-import { useState, lazy, Suspense, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { strings } from '@/config/strings.config';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { isDesktopDevice, isMobileDevice } from '@/utils/platformDetection';
-
-// Lazy load the actual iframe only when play is clicked
-const GameIframeCore = lazy(() => import('./GameIframeCore'));
+import GameIframeCore from './GameIframeCore';
 
 // Lazy load mobile fullscreen component
 const MobileFullScreenGame = dynamic(() => import('./MobileFullScreenGame'), {
@@ -246,26 +244,14 @@ export default function GameIframe({
                 : {}
             }
           >
-            <Suspense
-              fallback={
-                <div
-                  className={`relative overflow-hidden border shadow-lg bg-foreground flex items-center justify-center ${isIframeFullscreen ? 'w-full h-full' : 'aspect-video rounded-lg'}`}
-                >
-                  <div className="text-background text-lg font-medium animate-pulse">
-                    {strings.game.loadingGame}
-                  </div>
-                </div>
-              }
-            >
-              <GameIframeCore
-                src={src}
-                title={title}
-                className={isIframeFullscreen ? 'fullscreen-iframe' : ''}
-                onLoad={handleIframeLoad}
-                isLoading={isLoading}
-                isFullscreen={isIframeFullscreen}
-              />
-            </Suspense>
+            <GameIframeCore
+              src={src}
+              title={title}
+              className={isIframeFullscreen ? 'fullscreen-iframe' : ''}
+              onLoad={handleIframeLoad}
+              isLoading={isLoading}
+              isFullscreen={isIframeFullscreen}
+            />
           </div>
 
           {/* Desktop Game Banner - Moved to bottom with light divider */}
