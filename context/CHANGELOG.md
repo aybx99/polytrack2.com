@@ -2,6 +2,51 @@
 
 All notable changes to this project are documented here.
 
+## [2025-09-20] - Complete I18n to English-Only Strings Config Migration
+
+### Added
+
+- New centralized strings configuration system in src/config/strings.config.ts
+- Helper functions for dynamic content (formatReadingTime, formatBookmarkPrompt, formatCopyright)
+- Comprehensive TypeScript types for all string categories
+- 140+ English strings organized by functional categories (navigation, game, action, error, etc.)
+
+### Changed
+
+- **BREAKING**: Completely removed complex i18n internationalization system
+- Migrated all 16 components (9 server + 7 client) from i18n to strings config:
+  - Server components: Header.tsx, Footer.tsx, GameContent.tsx, not-found.tsx, and all legal pages
+  - Client components: GameIframe.tsx, DesktopGameBanner.tsx, ErrorFallback.tsx, GameIframeCore.tsx, OfflineIndicator.tsx, MobileFullScreenGame.tsx
+- Replaced all `useTranslation()` hooks with direct `strings` imports
+- Replaced all `getServerTranslations()` calls with direct `strings` access
+- Updated error handling functions to use strings config instead of translation parameters
+- Removed TranslationProvider from app/layout.tsx root layout
+
+### Removed
+
+- Entire src/i18n directory (6 files: index.tsx, config.ts, server.ts, utils.ts, locales/en.json)
+- All i18n-related imports and dependencies
+- Complex locale detection, storage, and management logic
+- Translation context providers and hooks
+- Variable interpolation and pluralization systems
+- Support for multiple locales (10 were defined but only English was active)
+
+### Improved
+
+- **Performance**: Direct string access eliminates translation function call overhead
+- **Bundle Size**: Removed unused i18n infrastructure and locale management code
+- **Maintainability**: Single configuration file for all UI strings
+- **Type Safety**: Direct TypeScript access to strings with autocomplete
+- **Simplicity**: Aligned with PRD requirement for English-only shipping
+- **Developer Experience**: Cleaner imports and more readable component code
+
+### Technical Impact
+
+- Reduced codebase complexity by removing 500+ lines of i18n infrastructure
+- Faster build times without locale processing and translation loading
+- Simplified deployment without locale-specific considerations
+- Better Core Web Vitals with eliminated client-side translation loading
+
 ## [2025-09-14 15:54 UTC] - Frontend-Only Game Rating System
 
 ### Added

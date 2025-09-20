@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { WifiOff } from 'lucide-react';
-import { useTranslation } from '@/i18n';
+import { strings } from '@/config/strings.config';
 
 export default function OfflineIndicator() {
-  const { t } = useTranslation();
   const [isOnline, setIsOnline] = useState(true);
   const [shouldLoadIndicator, setShouldLoadIndicator] = useState(false);
 
@@ -40,13 +39,13 @@ export default function OfflineIndicator() {
         <div className="flex items-center">
           <WifiOff className="w-5 h-5 mr-3" />
           <div>
-            <div className="font-medium">{t('offline.title')}</div>
-            <div className="text-sm">{t('offline.message')}</div>
+            <div className="font-medium">{strings.offline.title}</div>
+            <div className="text-sm">{strings.offline.message}</div>
           </div>
           <button
             onClick={() => setShouldLoadIndicator(false)}
             className="ml-auto text-warning-foreground hover:text-warning-foreground/80"
-            aria-label={t('action.dismiss')}
+            aria-label={strings.action.dismiss}
           >
             ×
           </button>

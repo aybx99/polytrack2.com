@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { Gamepad2 } from 'lucide-react';
-import { getServerTranslations } from '@/i18n/server';
+import { strings } from '@/config/strings.config';
 import { siteConfig } from '@/config/site.config';
 import { getMainGameConfig } from '@/config/games.config';
 
 export default async function Footer() {
-  const { t } = await getServerTranslations();
   const currentYear = new Date().getFullYear();
   const contactEmail = siteConfig.contact.email;
   const mainGame = getMainGameConfig();
@@ -24,7 +23,7 @@ export default async function Footer() {
               </span>
             </div>
             <p className="text-footer-foreground max-w-md leading-relaxed">
-              {t('site.description')}
+              {strings.site.description}
             </p>
 
             {/* Navigation Links - Horizontal layout */}
@@ -34,31 +33,31 @@ export default async function Footer() {
                   href={'/about' as any}
                   className="text-footer-muted hover:text-primary transition-colors font-medium focus-ring rounded-md px-2 py-1"
                 >
-                  {t('navigation.about')}
+                  {strings.navigation.about}
                 </Link>
                 <Link
                   href={'/contact' as any}
                   className="text-footer-muted hover:text-primary transition-colors font-medium focus-ring rounded-md px-2 py-1"
                 >
-                  {t('navigation.contact')}
+                  {strings.navigation.contact}
                 </Link>
                 <Link
                   href={'/privacy-policy' as any}
                   className="text-footer-muted hover:text-primary transition-colors font-medium focus-ring rounded-md px-2 py-1"
                 >
-                  {t('footer.privacyPolicy')}
+                  {strings.footer.privacyPolicy}
                 </Link>
                 <Link
                   href={'/terms-of-service' as any}
                   className="text-footer-muted hover:text-primary transition-colors font-medium focus-ring rounded-md px-2 py-1"
                 >
-                  {t('footer.termsOfService')}
+                  {strings.footer.termsOfService}
                 </Link>
                 <Link
                   href={'/dmca' as any}
                   className="text-footer-muted hover:text-primary transition-colors font-medium focus-ring rounded-md px-2 py-1"
                 >
-                  {t('footer.dmca')}
+                  {strings.footer.dmca}
                 </Link>
               </nav>
             </div>
@@ -67,21 +66,21 @@ export default async function Footer() {
           {/* Contact Information */}
           <div className="space-y-4">
             <h3 className="text-footer-foreground font-semibold text-lg">
-              {t('footer.contactUs')}
+              {strings.footer.contactUs}
             </h3>
             <div className="space-y-3 text-sm">
               <div className="flex flex-col space-y-1">
                 <span className="text-footer-muted font-medium">
-                  {t('footer.email')}:
+                  {strings.footer.email}:
                 </span>
                 <span className="text-footer-foreground">{contactEmail}</span>
               </div>
               <div className="flex flex-col space-y-1">
                 <span className="text-footer-muted font-medium">
-                  {t('footer.supportLabel')}:
+                  {strings.footer.supportLabel}:
                 </span>
                 <span className="text-footer-foreground">
-                  {t('footer.support')}
+                  {strings.footer.support}
                 </span>
               </div>
             </div>
@@ -91,7 +90,7 @@ export default async function Footer() {
         {/* Bottom Bar */}
         <div className="mt-8 pt-8 border-t border-footer-muted/20 text-center text-sm">
           <p className="text-footer-muted">
-            &copy; {currentYear} {gameName}. {t('footer.allRightsReserved')}
+            &copy; {currentYear} {gameName}. {strings.footer.allRightsReserved}
           </p>
         </div>
       </div>

@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { getServerTranslations } from '@/i18n/server';
 import { siteConfig } from '@/config/site.config';
 import { getMainGameConfig } from '@/config/games.config';
 
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
 };
 
 export default async function PrivacyPolicyPage() {
-  const { t } = await getServerTranslations();
   const contactEmail = siteConfig.contact.email;
   const legalDates = siteConfig.legal;
   const mainGame = getMainGameConfig();

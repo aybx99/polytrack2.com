@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Nunito } from 'next/font/google';
-import { TranslationProvider } from '@/i18n';
 import { MetadataGenerator } from '@/lib/seo';
 
 // Configure Nunito font
@@ -28,21 +27,19 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body className={`min-h-screen flex flex-col bg-body ${nunito.variable}`}>
-        <TranslationProvider initialLocale="en">
-          {/* [ANCHOR: web-vitals] */}
-          <WebVitals />
+        {/* [ANCHOR: web-vitals] */}
+        <WebVitals />
 
-          {/* [ANCHOR: offline-indicator] */}
-          <OfflineIndicator />
+        {/* [ANCHOR: offline-indicator] */}
+        <OfflineIndicator />
 
-          {/* [ANCHOR: header-navigation] */}
-          <Header />
+        {/* [ANCHOR: header-navigation] */}
+        <Header />
 
-          <main className="flex-grow bg-mesh">{children}</main>
+        <main className="flex-grow bg-mesh">{children}</main>
 
-          {/* [ANCHOR: footer-content] */}
-          <Footer />
-        </TranslationProvider>
+        {/* [ANCHOR: footer-content] */}
+        <Footer />
       </body>
     </html>
   );

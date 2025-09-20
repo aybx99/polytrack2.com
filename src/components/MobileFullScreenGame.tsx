@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { useTranslation } from '@/i18n';
+import { strings } from '@/config/strings.config';
 import { X, RotateCw, Smartphone } from 'lucide-react';
 
 interface MobileFullScreenGameProps {
@@ -15,7 +15,6 @@ export default function MobileFullScreenGame({
   title,
   onClose,
 }: MobileFullScreenGameProps) {
-  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
   const [gameStarted, setGameStarted] = useState(false);
   const [isPortrait, setIsPortrait] = useState(false);
@@ -100,7 +99,7 @@ export default function MobileFullScreenGame({
       <button
         onClick={onClose}
         className="absolute top-4 left-4 z-[10001] bg-black/60 backdrop-blur-sm text-white p-3 rounded-lg hover:bg-black/80 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/50"
-        aria-label={t('game.exitFullscreen')}
+        aria-label={strings.game.exitFullscreen}
       >
         <X className="w-6 h-6" />
       </button>
@@ -124,10 +123,10 @@ export default function MobileFullScreenGame({
 
             {/* Message */}
             <h2 className="text-white text-2xl font-bold mb-4">
-              {t('game.rotateDevice')}
+              {strings.game.rotateDevice}
             </h2>
             <p className="text-white/80 text-lg leading-relaxed mb-6">
-              {t('game.rotateMessage')}
+              {strings.game.rotateMessage}
             </p>
 
             {/* Visual indicator */}
@@ -151,7 +150,7 @@ export default function MobileFullScreenGame({
                 onClick={handleStartGame}
                 className="bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-lg px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/50 min-w-[200px]"
               >
-                🎮 {t('game.gotItPlayNow')}
+                🎮 {strings.game.gotItPlayNow}
               </button>
             </div>
           </div>
@@ -164,7 +163,7 @@ export default function MobileFullScreenGame({
           {isLoading && (
             <div className="absolute inset-0 z-[9998] bg-black flex items-center justify-center">
               <div className="text-white text-xl font-medium animate-pulse">
-                {t('game.loadingGame')}
+                {strings.game.loadingGame}
               </div>
             </div>
           )}

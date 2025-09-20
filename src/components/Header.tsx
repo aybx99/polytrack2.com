@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { getServerTranslations } from '@/i18n/server';
+import { strings } from '@/config/strings.config';
 import { getActiveSecondaryGames, getMainGameConfig } from '@/config';
 import { siteConfig } from '@/config/site.config';
 import NavigationLink from './NavigationLink';
@@ -8,18 +8,17 @@ import GamesDropdown from './GamesDropdown';
 import MobileMenu from './MobileMenu';
 
 export default async function Header() {
-  const { t } = await getServerTranslations();
   const secondaryGames = getActiveSecondaryGames();
   const mainGame = getMainGameConfig();
 
   // Prepare translations for client components
   const translations = {
-    home: t('navigation.home'),
-    games: t('navigation.games'),
-    about: t('navigation.about'),
-    contact: t('navigation.contact'),
-    openMenu: t('navigation.openMenu'),
-    closeMenu: t('navigation.closeMenu'),
+    home: strings.navigation.home,
+    games: strings.navigation.games,
+    about: strings.navigation.about,
+    contact: strings.navigation.contact,
+    openMenu: strings.navigation.openMenu,
+    closeMenu: strings.navigation.closeMenu,
   };
 
   // Show Similar Games navigation only when secondary games exist

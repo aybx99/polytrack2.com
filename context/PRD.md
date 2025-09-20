@@ -27,6 +27,8 @@
   - `/game/{slug}` → secondary games (long SEO description) - slugs from config
 - **SEO:** 1200–2000+ words per page, FAQs, internal links, JSON-LD.
 
+- **Strings & UI Copy:** English-only. Centralized config at `src/config/strings.config.ts` consumed directly by components. No i18n/translation logic.
+
 ---
 
 ## 3) Data Model (WordPress → Next.js)

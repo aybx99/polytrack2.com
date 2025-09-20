@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, lazy, Suspense, useEffect, useRef } from 'react';
-import { useTranslation } from '@/i18n';
+import { strings } from '@/config/strings.config';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { isDesktopDevice, isMobileDevice } from '@/utils/platformDetection';
@@ -36,7 +36,6 @@ export default function GameIframe({
   initialRating,
   initialRatingCount,
 }: GameIframeProps) {
-  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showMobileFullscreen, setShowMobileFullscreen] = useState(false);
@@ -208,7 +207,9 @@ export default function GameIframe({
                     >
                       <path d="M8 5v14l11-7z" />
                     </svg>
-                    <span className="font-semibold">{t('game.playNow')}</span>
+                    <span className="font-semibold">
+                      {strings.game.playNow}
+                    </span>
                   </span>
                 </button>
               </div>
@@ -251,7 +252,7 @@ export default function GameIframe({
                   className={`relative overflow-hidden border shadow-lg bg-foreground flex items-center justify-center ${isIframeFullscreen ? 'w-full h-full' : 'aspect-video rounded-lg'}`}
                 >
                   <div className="text-background text-lg font-medium animate-pulse">
-                    {t('game.loadingGame')}
+                    {strings.game.loadingGame}
                   </div>
                 </div>
               }

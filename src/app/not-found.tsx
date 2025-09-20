@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import { getServerTranslations } from '@/i18n/server';
 import { Gamepad2, Home, Search } from 'lucide-react';
 
 export default async function NotFoundPage() {
-  const { t } = await getServerTranslations();
-
   return (
     <div className="min-h-screen bg-body flex items-center justify-center px-4">
       <div className="max-w-md w-full text-center">

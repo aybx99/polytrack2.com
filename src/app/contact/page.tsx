@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { getServerTranslations } from '@/i18n/server';
 import { siteConfig, getFormattedResponseTime } from '@/config';
 import { Mail, MessageSquare, Clock, MapPin } from 'lucide-react';
 
@@ -22,7 +21,6 @@ export const metadata: Metadata = {
 };
 
 export default async function ContactPage() {
-  const { t } = await getServerTranslations();
   const contactEmail = siteConfig.contact.email;
   const responseTime = getFormattedResponseTime();
 

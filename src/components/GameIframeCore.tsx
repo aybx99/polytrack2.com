@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslation } from '@/i18n';
+import { strings } from '@/config/strings.config';
 
 interface GameIframeCoreProps {
   src: string;
@@ -19,8 +19,6 @@ export default function GameIframeCore({
   isLoading = false,
   isFullscreen = false,
 }: GameIframeCoreProps) {
-  const { t } = useTranslation();
-
   return (
     <div
       className={`relative overflow-hidden ${isFullscreen ? 'w-full h-full' : 'aspect-video rounded-lg border shadow-lg'} ${className}`}
@@ -34,7 +32,7 @@ export default function GameIframeCore({
       {isLoading && (
         <div className="absolute inset-0 bg-foreground flex items-center justify-center z-20">
           <div className="text-background text-lg font-medium animate-pulse">
-            {t('game.loadingGame')}
+            {strings.game.loadingGame}
           </div>
         </div>
       )}
@@ -51,7 +49,7 @@ export default function GameIframeCore({
           border: 'none',
           display: 'block',
         }}
-        aria-label={t('game.game_frame_label')}
+        aria-label={strings.game.gameFrameLabel}
         loading="lazy"
       />
     </div>

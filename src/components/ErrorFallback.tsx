@@ -8,7 +8,7 @@
 
 import Link from 'next/link';
 import { ApiError } from '@/lib/types/game.types';
-import { useTranslation } from '@/i18n';
+import { strings } from '@/config/strings.config';
 
 // [ANCHOR: error-fallback-types]
 interface ErrorFallbackProps {
@@ -31,20 +31,18 @@ export function ErrorFallback({
   retry,
   minimal = false,
 }: ErrorFallbackProps) {
-  const { t } = useTranslation();
-
   if (minimal) {
     return (
       <div className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
         <p className="text-destructive-foreground text-sm">
-          {getErrorMessage(error, t)}
+          {getErrorMessage(error)}
         </p>
         {retry && (
           <button
             onClick={retry}
             className="mt-2 text-destructive hover:text-destructive-foreground text-sm underline"
           >
-            {t('action.tryAgain')}
+            {strings.action.tryAgain}
           </button>
         )}
       </div>
@@ -71,11 +69,11 @@ export function ErrorFallback({
         </div>
 
         <h3 className="text-lg font-semibold text-destructive-foreground mb-2">
-          {getErrorTitle(error, t)}
+          {getErrorTitle(error)}
         </h3>
 
         <p className="text-destructive-foreground/90 mb-4">
-          {getErrorMessage(error, t)}
+          {getErrorMessage(error)}
         </p>
 
         {retry && (
@@ -83,7 +81,7 @@ export function ErrorFallback({
             onClick={retry}
             className="bg-destructive hover:bg-destructive/90 text-destructive-foreground font-medium py-2 px-4 rounded-lg transition-colors"
           >
-            {t('action.tryAgain')}
+            {strings.action.tryAgain}
           </button>
         )}
 
@@ -107,8 +105,6 @@ export function ErrorFallback({
  * Game not found specific error component
  */
 export function GameNotFound({ slug, isMainGame = false }: GameNotFoundProps) {
-  const { t } = useTranslation();
-
   return (
     <div className="max-w-2xl mx-auto p-8 text-center">
       <div className="bg-warning/10 border border-warning/20 rounded-xl p-6">
@@ -129,11 +125,13 @@ export function GameNotFound({ slug, isMainGame = false }: GameNotFoundProps) {
         </div>
 
         <h3 className="text-lg font-semibold text-warning-foreground mb-2">
-          {isMainGame ? t('error.loadingFailed') : t('error.gameNotFound')}
+          {isMainGame
+            ? strings.error.loadingFailed
+            : strings.error.gameNotFound}
         </h3>
 
         <p className="text-warning-foreground/90 mb-4">
-          {isMainGame ? t('error.serverError') : t('error.gameNotFound')}
+          {isMainGame ? strings.error.serverError : strings.error.gameNotFound}
         </p>
 
         {!isMainGame && (
@@ -141,7 +139,7 @@ export function GameNotFound({ slug, isMainGame = false }: GameNotFoundProps) {
             href="/"
             className="inline-block bg-warning hover:bg-warning/90 text-warning-foreground font-medium py-2 px-4 rounded-lg transition-colors"
           >
-            {t('action.goHome')}
+            {strings.action.goHome}
           </Link>
         )}
       </div>
@@ -154,8 +152,7 @@ export function GameNotFound({ slug, isMainGame = false }: GameNotFoundProps) {
  * Loading state component
  */
 export function LoadingFallback({ message }: { message?: string }) {
-  const { t } = useTranslation();
-  const displayMessage = message || t('game.loadingGame');
+  const displayMessage = message || strings.game.loadingGame;
 
   return (
     <div className="max-w-2xl mx-auto p-8 text-center">
@@ -193,8 +190,6 @@ export function LoadingFallback({ message }: { message?: string }) {
  * Network error specific component
  */
 export function NetworkError({ retry }: { retry?: () => void }) {
-  const { t } = useTranslation();
-
   return (
     <div className="max-w-2xl mx-auto p-8 text-center">
       <div className="bg-muted border border-border rounded-xl p-6">
@@ -215,11 +210,11 @@ export function NetworkError({ retry }: { retry?: () => void }) {
         </div>
 
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          {t('error.connectionError')}
+          {strings.error.connectionError}
         </h3>
 
         <p className="text-muted-foreground mb-4">
-          {t('error.connectionError')}
+          {strings.error.connectionError}
         </p>
 
         {retry && (
@@ -227,7 +222,7 @@ export function NetworkError({ retry }: { retry?: () => void }) {
             onClick={retry}
             className="bg-muted-foreground hover:bg-foreground text-background font-medium py-2 px-4 rounded-lg transition-colors"
           >
-            {t('action.tryAgain')}
+            {strings.action.tryAgain}
           </button>
         )}
       </div>
@@ -239,35 +234,35 @@ export function NetworkError({ retry }: { retry?: () => void }) {
 /**
  * Get user-friendly error title based on error type
  */
-function getErrorTitle(error: ApiError, t: (key: any) => string): string {
+function getErrorTitle(error: ApiError): string {
   switch (error.code) {
     case 'NOT_FOUND':
-      return t('error.gameNotFound');
+      return strings.error.gameNotFound;
     case 'NETWORK_ERROR':
-      return t('error.connectionError');
+      return strings.error.connectionError;
     case 'GRAPHQL_ERROR':
-      return t('error.serverError');
+      return strings.error.serverError;
     case 'VALIDATION_ERROR':
-      return t('error.invalidData');
+      return strings.error.invalidData;
     default:
-      return t('error.genericError');
+      return strings.error.genericError;
   }
 }
 
 /**
  * Get user-friendly error message
  */
-function getErrorMessage(error: ApiError, t: (key: any) => string): string {
+function getErrorMessage(error: ApiError): string {
   switch (error.code) {
     case 'NOT_FOUND':
-      return t('error.gameNotFound');
+      return strings.error.gameNotFound;
     case 'NETWORK_ERROR':
-      return t('error.connectionError');
+      return strings.error.connectionError;
     case 'GRAPHQL_ERROR':
-      return t('error.serverError');
+      return strings.error.serverError;
     case 'VALIDATION_ERROR':
-      return t('error.invalidData');
+      return strings.error.invalidData;
     default:
-      return error.message || t('error.genericError');
+      return error.message || strings.error.genericError;
   }
 }

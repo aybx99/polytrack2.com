@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslation } from '@/i18n';
+import { strings, formatBookmarkPrompt } from '@/config/strings.config';
 import Image from 'next/image';
 import {
   Share,
@@ -39,7 +39,6 @@ export default function DesktopGameBanner({
   initialRatingCount,
   className = '',
 }: DesktopGameBannerProps) {
-  const { t } = useTranslation();
   const [showQRCode, setShowQRCode] = useState(false);
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
@@ -84,7 +83,7 @@ export default function DesktopGameBanner({
   const handleShare = async () => {
     const shareData = {
       title: gameTitle,
-      text: `${t('game.shareText')} ${gameTitle}`,
+      text: `${strings.game.shareText} ${gameTitle}`,
       url: currentUrl,
     };
 
@@ -131,7 +130,7 @@ export default function DesktopGameBanner({
         {/* Left Side: Bookmark Prompt */}
         <div className="flex items-center space-x-3">
           <div className="text-muted-foreground">
-            {t('game.bookmarkPrompt').replace('{{shortcut}}', bookmarkShortcut)}
+            {formatBookmarkPrompt(bookmarkShortcut)}
           </div>
         </div>
 
@@ -141,19 +140,19 @@ export default function DesktopGameBanner({
           <button
             onClick={handleShare}
             className="inline-flex items-center space-x-2 px-3 py-2 text-sm font-medium text-foreground bg-card border border-border rounded-md hover:bg-primary hover:text-primary-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm hover:shadow-md"
-            aria-label={t('action.share')}
+            aria-label={strings.action.share}
           >
             {linkCopied ? (
               <>
                 <Check className="w-4 h-4 text-success-bright" />
                 <span className="text-success-bright">
-                  {t('action.linkCopied')}
+                  {strings.action.linkCopied}
                 </span>
               </>
             ) : (
               <>
                 <Share className="w-4 h-4" />
-                <span>{t('action.share')}</span>
+                <span>{strings.action.share}</span>
               </>
             )}
           </button>
@@ -162,22 +161,26 @@ export default function DesktopGameBanner({
           <button
             onClick={handleRateClick}
             className="inline-flex items-center space-x-2 px-3 py-2 text-sm font-medium text-foreground bg-card border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm hover:shadow-md"
-            aria-label={hasRated ? t('game.changeRating') : t('game.rateGame')}
+            aria-label={
+              hasRated ? strings.game.changeRating : strings.game.rateGame
+            }
           >
             <Star
               className={`w-4 h-4 ${hasRated ? 'fill-star text-star' : ''}`}
             />
-            <span>{hasRated ? t('game.changeRating') : t('game.rate')}</span>
+            <span>
+              {hasRated ? strings.game.changeRating : strings.game.rate}
+            </span>
           </button>
 
           {/* QR Code / Phone Button */}
           <button
             onClick={handleQRCodeToggle}
             className="inline-flex items-center space-x-2 px-3 py-2 text-sm font-medium text-foreground bg-card border border-border rounded-md hover:bg-secondary hover:text-secondary-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm hover:shadow-md"
-            aria-label={t('action.phone')}
+            aria-label={strings.action.phone}
           >
             <Smartphone className="w-4 h-4" />
-            <span>{t('action.phone')}</span>
+            <span>{strings.action.phone}</span>
           </button>
 
           {/* Fullscreen Button */}
@@ -185,18 +188,20 @@ export default function DesktopGameBanner({
             onClick={onToggleFullscreen}
             className="inline-flex items-center space-x-2 px-3 py-2 text-sm font-medium text-foreground bg-card border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm hover:shadow-md"
             aria-label={
-              isFullscreen ? t('action.exitFullscreen') : t('action.fullscreen')
+              isFullscreen
+                ? strings.action.exitFullscreen
+                : strings.action.fullscreen
             }
           >
             {isFullscreen ? (
               <>
                 <Minimize className="w-4 h-4" />
-                <span>{t('action.exitFullscreen')}</span>
+                <span>{strings.action.exitFullscreen}</span>
               </>
             ) : (
               <>
                 <Maximize className="w-4 h-4" />
-                <span>{t('action.fullscreen')}</span>
+                <span>{strings.action.fullscreen}</span>
               </>
             )}
           </button>
@@ -209,7 +214,7 @@ export default function DesktopGameBanner({
           <div className="bg-card border border-border rounded-lg shadow-2xl p-6 max-w-sm mx-4">
             <div className="text-center">
               <h3 className="text-lg font-semibold text-foreground mb-4">
-                {t('game.scanToPlay')}
+                {strings.game.scanToPlay}
               </h3>
 
               {/* QR Code Display */}
@@ -217,7 +222,7 @@ export default function DesktopGameBanner({
                 {qrCodeLoading ? (
                   <div className="text-center text-muted-foreground">
                     <Smartphone className="w-12 h-12 mx-auto mb-2 animate-pulse" />
-                    <div className="text-sm">{t('game.generatingQR')}</div>
+                    <div className="text-sm">{strings.game.generatingQR}</div>
                   </div>
                 ) : qrCodeDataUrl ? (
                   <Image
@@ -231,7 +236,7 @@ export default function DesktopGameBanner({
                 ) : (
                   <div className="text-center text-muted-foreground">
                     <Smartphone className="w-12 h-12 mx-auto mb-2" />
-                    <div className="text-sm">{t('game.qrUnavailable')}</div>
+                    <div className="text-sm">{strings.game.qrUnavailable}</div>
                   </div>
                 )}
               </div>
@@ -244,7 +249,7 @@ export default function DesktopGameBanner({
                 onClick={() => setShowQRCode(false)}
                 className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border rounded-md hover:bg-primary hover:text-primary-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 shadow-sm hover:shadow-md"
               >
-                {t('action.close')}
+                {strings.action.close}
               </button>
             </div>
           </div>

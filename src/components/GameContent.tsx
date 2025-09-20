@@ -1,5 +1,5 @@
 import type { ProcessedGameData } from '@/lib/api';
-import { getServerTranslations } from '@/i18n/server';
+import { strings } from '@/config/strings.config';
 import GameIframe from './GameIframe';
 import ServerRichContent from './ServerRichContent';
 import StarRating from './StarRating';
@@ -19,9 +19,6 @@ export default async function GameContent({
   relatedGames = [],
   className = '',
 }: GameContentProps) {
-  // Use server-side translations for better SEO
-  const { t } = await getServerTranslations();
-
   return (
     <article className={`space-y-8 ${className}`}>
       {/* Game Header */}
@@ -49,13 +46,15 @@ export default async function GameContent({
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             {game.developer && (
               <div className="flex items-center gap-1">
-                <span className="font-medium">{t('game.developer')}:</span>
+                <span className="font-medium">{strings.game.developer}:</span>
                 <span>{game.developer}</span>
               </div>
             )}
             {game.published_at && (
               <div className="flex items-center gap-1">
-                <span className="font-medium">{t('game.publishedDate')}:</span>
+                <span className="font-medium">
+                  {strings.game.publishedDate}:
+                </span>
                 <span>
                   {new Date(game.published_at).toLocaleDateString('en-US', {
                     year: 'numeric',
@@ -120,7 +119,7 @@ export default async function GameContent({
       {relatedGames.length > 0 && (
         <section className="space-y-4 border-t pt-8">
           <h2 className="text-2xl font-semibold text-foreground">
-            {t('game.relatedGames')}
+            {strings.game.relatedGames}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedGames.map((relatedGame) => (

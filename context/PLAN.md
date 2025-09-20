@@ -53,19 +53,22 @@
   - [x] ISR caching strategy implemented
   - [x] Input sanitization for WordPress rich content
 
-### Module 4: Internationalization (i18n) Setup
+### Module 4: Strings Configuration System (English-only)
 
 - **Status:** [x] completed
 - **Priority:** High
 - **Dependencies:** Module 1
-- **Started:** 2025-09-02 00:03 UTC
-- **Completed:** 2025-09-02 00:12 UTC
+- **Started:** 2025-09-20 17:00 UTC
+- **Completed:** 2025-09-20 17:30 UTC
 - **Acceptance Criteria:**
-  - [x] i18n/config.ts with centralized configuration
-  - [x] i18n/locales/en.json with default copy
-  - [x] No hard-coded UI strings in components
-  - [x] Locale fallback behavior defined
-  - [x] RTL readiness (if required)
+  - [x] src/config/strings.config.ts central strings object
+  - [x] No i18n/translation logic; project ships in English
+  - [x] No hard-coded UI strings in components (strings imported from config)
+  - [x] Type-safe access to strings (readonly structure)
+  - [x] Documentation for updating copy in one place
+  - [x] Complete migration from complex i18n system to simple English-only config
+  - [x] Removed entire src/i18n directory and dependencies
+  - [x] Updated all 16 components (9 server + 7 client) to use strings config
 
 ### Module 5: SEO & Metadata System
 
