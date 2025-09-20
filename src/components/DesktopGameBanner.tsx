@@ -52,8 +52,13 @@ export default function DesktopGameBanner({
     initialRatingCount
   );
 
-  const bookmarkShortcut = getBookmarkShortcut();
+  const [bookmarkShortcut, setBookmarkShortcut] = useState('Ctrl+D');
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+  useEffect(() => {
+    // Set the correct bookmark shortcut on client side to avoid hydration mismatch
+    setBookmarkShortcut(getBookmarkShortcut());
+  }, []);
 
   useEffect(() => {
     const generateQRCode = async () => {

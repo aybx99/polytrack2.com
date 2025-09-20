@@ -51,6 +51,16 @@ export const gameStrings = {
   rateGame: 'Rate this game',
   changeRating: 'Change Rating',
   alreadyRated: 'You have already rated this game',
+  changeYourRating: 'Change Your Rating',
+  rateGameTitle: 'Rate',
+  previousRatingMessage: 'You previously rated this game',
+  selectNewRating: 'Select a new rating below.',
+  howWouldYouRate: 'How would you rate your experience with this game?',
+  youSelected: 'You selected',
+  star: 'star',
+  stars: 'stars',
+  updateRating: 'Update Rating',
+  submitRating: 'Submit Rating',
 } as const;
 
 // [ANCHOR: action-strings]
@@ -68,6 +78,7 @@ export const actionStrings = {
   exitFullscreen: 'Exit Fullscreen',
   linkCopied: 'Link copied to clipboard!',
   dismiss: 'Dismiss',
+  cancel: 'Cancel',
 } as const;
 
 // [ANCHOR: error-strings]
@@ -177,6 +188,30 @@ export function formatBookmarkPrompt(shortcut: string): string {
  */
 export function formatCopyright(year: number, siteName: string): string {
   return `${footerStrings.copyright} © ${year} ${siteName}`;
+}
+
+/**
+ * Helper function to format previous rating message
+ */
+export function formatPreviousRatingMessage(rating: number): string {
+  const starText = rating === 1 ? gameStrings.star : gameStrings.stars;
+  return `${gameStrings.previousRatingMessage} ${rating} ${starText}. ${gameStrings.selectNewRating}`;
+}
+
+/**
+ * Helper function to format selected rating message
+ */
+export function formatSelectedRatingMessage(rating: number): string {
+  const starText = rating === 1 ? gameStrings.star : gameStrings.stars;
+  return `${gameStrings.youSelected} ${rating} ${starText}`;
+}
+
+/**
+ * Helper function to format star aria label
+ */
+export function formatStarAriaLabel(rating: number): string {
+  const starText = rating === 1 ? gameStrings.star : gameStrings.stars;
+  return `${gameStrings.rateGameTitle} ${rating} ${starText}`;
 }
 
 // [ANCHOR: typescript-types]

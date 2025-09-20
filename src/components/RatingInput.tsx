@@ -2,6 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Star, X } from 'lucide-react';
+import {
+  strings,
+  formatPreviousRatingMessage,
+  formatSelectedRatingMessage,
+  formatStarAriaLabel,
+} from '@/config/strings.config';
 
 interface RatingInputProps {
   isOpen: boolean;
@@ -43,21 +49,22 @@ export function RatingInput({
       <button
         onClick={onClose}
         className="absolute right-4 top-4 rounded-sm opacity-70 hover:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-        aria-label="Close"
+        aria-label={strings.action.close}
       >
         <X className="h-4 w-4 text-foreground" />
       </button>
 
       <div className="text-center">
         <h3 className="text-lg font-semibold text-foreground mb-2">
-          {hasRated ? 'Change Your Rating' : 'Rate'} {gameTitle}
+          {hasRated
+            ? strings.game.changeYourRating
+            : strings.game.rateGameTitle}{' '}
+          {gameTitle}
         </h3>
         <p className="text-sm text-muted-foreground mb-6">
           {hasRated
-            ? `You previously rated this game ${currentRating} star${
-                currentRating !== 1 ? 's' : ''
-              }. Select a new rating below.`
-            : 'How would you rate your experience with this game?'}
+            ? formatPreviousRatingMessage(currentRating || 0)
+            : strings.game.howWouldYouRate}
         </p>
 
         <div className="flex justify-center gap-1 mb-4">
@@ -73,7 +80,7 @@ export function RatingInput({
                 onMouseLeave={() => setHoveredStar(0)}
                 onClick={() => setSelectedStar(starNumber)}
                 className="transition-transform hover:scale-110 focus:outline-none focus:scale-110"
-                aria-label={`Rate ${starNumber} star${starNumber > 1 ? 's' : ''}`}
+                aria-label={formatStarAriaLabel(starNumber)}
               >
                 <Star
                   className={`w-10 h-10 ${
@@ -89,7 +96,7 @@ export function RatingInput({
 
         {selectedStar > 0 && (
           <p className="text-sm text-muted-foreground mb-6">
-            You selected {selectedStar} star{selectedStar > 1 ? 's' : ''}
+            {formatSelectedRatingMessage(selectedStar)}
           </p>
         )}
 
@@ -98,7 +105,7 @@ export function RatingInput({
             onClick={onClose}
             className="px-4 py-2 text-sm font-medium text-foreground bg-card border border-border rounded-md hover:bg-accent hover:text-accent-foreground transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow-sm"
           >
-            Cancel
+            {strings.action.cancel}
           </button>
           <button
             onClick={handleSubmit}
@@ -109,7 +116,7 @@ export function RatingInput({
                 : 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-md'
             }`}
           >
-            {hasRated ? 'Update Rating' : 'Submit Rating'}
+            {hasRated ? strings.game.updateRating : strings.game.submitRating}
           </button>
         </div>
       </div>
