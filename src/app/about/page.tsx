@@ -1,7 +1,15 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getMainGame } from '@/lib/api';
-import { Gamepad2, Target, Users, Shield } from 'lucide-react';
+import {
+  Zap,
+  Target,
+  Users,
+  Shield,
+  Gauge,
+  Trophy,
+  Rocket,
+} from 'lucide-react';
 import { MetadataGenerator } from '@/lib/seo';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,151 +35,147 @@ export default async function AboutPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
-            <Gamepad2 className="w-16 h-16 text-primary" />
+            <div className="relative">
+              <Zap className="w-16 h-16 text-primary neon-glow" />
+              <div className="absolute inset-0 w-16 h-16 bg-primary/20 rounded-full blur-xl"></div>
+            </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            About {gameTitle}
-          </h1>
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <h1 className="heading-hero mb-6 neon-glow">About {gameTitle}</h1>
+          <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto font-inter">
             {gameDescription}
           </p>
         </div>
 
-        {/* Mission Section */}
+        {/* Racing Features Section */}
         <section className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
+            <div className="text-center glass-medium p-6 rounded-lg racing-border">
               <div className="flex justify-center mb-4">
-                <Target className="w-12 h-12 text-primary" />
+                <div className="relative">
+                  <Gauge className="w-12 h-12 text-primary" />
+                  <div className="absolute inset-0 w-12 h-12 bg-primary/20 rounded-full blur-lg"></div>
+                </div>
               </div>
-              <h2 className="text-xl font-semibold text-foreground mb-3">
-                Our Mission
-              </h2>
-              <p className="text-muted-foreground">
-                To make gaming accessible to everyone by providing instant
-                access to quality games without downloads or installations.
+              <h2 className="heading-card mb-3">High Speed Racing</h2>
+              <p className="text-muted-foreground font-inter">
+                Experience lightning-fast racing action with cutting-edge
+                physics and responsive controls that put you in the
+                driver&apos;s seat.
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center glass-medium p-6 rounded-lg racing-border">
               <div className="flex justify-center mb-4">
-                <Users className="w-12 h-12 text-primary" />
+                <div className="relative">
+                  <Trophy className="w-12 h-12 text-primary" />
+                  <div className="absolute inset-0 w-12 h-12 bg-primary/20 rounded-full blur-lg"></div>
+                </div>
               </div>
-              <h2 className="text-xl font-semibold text-foreground mb-3">
-                Community First
-              </h2>
-              <p className="text-muted-foreground">
-                We believe in building a community of gamers who can easily
-                discover, play, and share amazing gaming experiences.
+              <h2 className="heading-card mb-3">Competitive Edge</h2>
+              <p className="text-muted-foreground font-inter">
+                Master challenging tracks, beat your best times, and climb the
+                leaderboards in this ultimate test of racing skill.
               </p>
             </div>
 
-            <div className="text-center">
+            <div className="text-center glass-medium p-6 rounded-lg racing-border">
               <div className="flex justify-center mb-4">
-                <Shield className="w-12 h-12 text-primary" />
+                <div className="relative">
+                  <Rocket className="w-12 h-12 text-primary" />
+                  <div className="absolute inset-0 w-12 h-12 bg-primary/20 rounded-full blur-lg"></div>
+                </div>
               </div>
-              <h2 className="text-xl font-semibold text-foreground mb-3">
-                Safe Gaming
-              </h2>
-              <p className="text-muted-foreground">
-                All games are carefully curated and tested to ensure
-                they&apos;re safe, fun, and appropriate for our community.
+              <h2 className="heading-card mb-3">Instant Access</h2>
+              <p className="text-muted-foreground font-inter">
+                Jump straight into the action with no downloads or
+                installations. Pure browser-based racing at its finest.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Game Story Section */}
-        <section className="bg-card rounded-lg shadow-sm p-8 mb-16">
-          <h2 className="text-3xl font-bold text-foreground mb-6">
-            About {gameTitle}
-          </h2>
+        {/* Racing Story Section */}
+        <section className="glass-medium rounded-lg p-8 mb-16 racing-border">
+          <h2 className="heading-section mb-6">The {gameTitle} Experience</h2>
           <div className="prose prose-lg max-w-none text-muted-foreground">
-            <p className="mb-6">
-              {gameTitle} is designed to be instantly playable in your web
-              browser, with no downloads or installations required. Whether
-              you&apos;re looking for a quick gaming break or an extended play
-              session, this game delivers an engaging experience that&apos;s
-              accessible to players of all skill levels.
+            <p className="mb-6 font-inter text-lg leading-relaxed">
+              {gameTitle} delivers an adrenaline-fueled racing experience that
+              pushes the boundaries of browser-based gaming. With
+              precision-engineered physics, responsive controls, and stunning
+              visual effects, every race feels authentic and exhilarating.
             </p>
-            <p className="mb-6">
-              Built with modern web technology, {gameTitle} offers smooth
-              gameplay and responsive controls that work seamlessly across
-              desktop and mobile devices. Jump right in and discover what makes
-              this game a favorite among players worldwide.
+            <p className="mb-6 font-inter text-lg leading-relaxed">
+              Built with cutting-edge web technology, {gameTitle} offers
+              seamless performance across all devices. Whether you&apos;re
+              navigating tight corners, hitting boost pads, or competing for the
+              fastest lap time, the game responds instantly to your every move.
+            </p>
+            <p className="font-inter text-lg leading-relaxed">
+              Join the racing revolution and experience what makes {gameTitle}{' '}
+              the ultimate destination for speed enthusiasts and casual racers
+              alike.
             </p>
           </div>
         </section>
 
-        {/* Values Section */}
+        {/* Racing Technology Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Our Values
+          <h2 className="heading-section text-center mb-12">
+            Racing Technology
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-card rounded-lg shadow-sm p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Accessibility
-              </h3>
-              <p className="text-muted-foreground">
-                We believe gaming should be available to everyone, regardless of
-                device, location, or technical expertise. Our platform is
-                designed to work seamlessly across all modern browsers and
-                devices.
+            <div className="glass-medium rounded-lg p-6 racing-border">
+              <h3 className="heading-card mb-3">Universal Compatibility</h3>
+              <p className="text-muted-foreground font-inter">
+                Race on any device, anywhere. Our advanced engine delivers
+                consistent high-performance gaming across desktop, tablet, and
+                mobile browsers without compromise.
               </p>
             </div>
 
-            <div className="bg-card rounded-lg shadow-sm p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Quality
-              </h3>
-              <p className="text-muted-foreground">
-                Every game in our collection is carefully selected and tested.
-                We prioritize user experience, performance, and fun factor to
-                ensure you have the best possible gaming experience.
+            <div className="glass-medium rounded-lg p-6 racing-border">
+              <h3 className="heading-card mb-3">Precision Engineering</h3>
+              <p className="text-muted-foreground font-inter">
+                Every aspect is meticulously crafted for racing perfection. From
+                physics simulation to control responsiveness, we prioritize the
+                ultimate competitive racing experience.
               </p>
             </div>
 
-            <div className="bg-card rounded-lg shadow-sm p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Innovation
-              </h3>
-              <p className="text-muted-foreground">
-                We&apos;re constantly exploring new technologies and gaming
-                trends to bring you cutting-edge experiences that push the
-                boundaries of what&apos;s possible in a web browser.
+            <div className="glass-medium rounded-lg p-6 racing-border">
+              <h3 className="heading-card mb-3">Next-Gen Performance</h3>
+              <p className="text-muted-foreground font-inter">
+                Powered by cutting-edge web technologies, we push the limits of
+                browser gaming with smooth 60fps gameplay, realistic physics,
+                and stunning visual effects.
               </p>
             </div>
 
-            <div className="bg-card rounded-lg shadow-sm p-6">
-              <h3 className="text-xl font-semibold text-foreground mb-3">
-                Community
-              </h3>
-              <p className="text-muted-foreground">
-                Gaming is more fun when shared. We&apos;re building features and
-                experiences that connect players and foster a positive,
-                inclusive gaming community.
+            <div className="glass-medium rounded-lg p-6 racing-border">
+              <h3 className="heading-card mb-3">Racing Community</h3>
+              <p className="text-muted-foreground font-inter">
+                Connect with fellow speed enthusiasts, share racing strategies,
+                and compete for the fastest times in our growing community of
+                racing champions.
               </p>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="text-center bg-secondary rounded-lg p-8">
-          <h2 className="text-2xl font-bold text-foreground mb-4">
-            Ready to Play {gameTitle}?
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Experience {gameTitle} for yourself and discover why players keep
-            coming back. No downloads, no waiting – just instant gaming fun in
-            your browser.
+        {/* Racing CTA Section */}
+        <section className="text-center glass-medium rounded-lg p-8 racing-border">
+          <h2 className="heading-section mb-4 neon-glow">Ready to Race?</h2>
+          <p className="text-muted-foreground mb-6 font-inter text-lg">
+            Start your engines and experience {gameTitle} now. Feel the rush of
+            high-speed racing with no downloads, no waiting – just pure
+            adrenaline-fueled action in your browser.
           </p>
           <Link
             href="/"
-            className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary-hover transition-colors"
+            className="inline-flex items-center px-8 py-4 gradient-cta text-white font-heading font-semibold rounded-lg hover:scale-105 transition-all duration-200 racing-border uppercase tracking-wider"
           >
-            <Gamepad2 className="w-5 h-5 mr-2" />
-            Play {gameTitle} Now
+            <Zap className="w-5 h-5 mr-2" />
+            Start Racing Now
           </Link>
         </section>
       </div>
