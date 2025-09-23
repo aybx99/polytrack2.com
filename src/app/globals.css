@@ -33,25 +33,37 @@
     @apply space-y-6 sm:space-y-8;
   }
 
-  /* Typography Utilities */
+  /* Typography Utilities - Racing Theme */
   .heading-hero {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight;
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
 
   .heading-section {
-    @apply text-2xl sm:text-3xl font-bold text-foreground;
+    @apply text-2xl sm:text-3xl font-heading font-bold text-foreground;
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.2);
   }
 
   .heading-card {
-    @apply text-lg sm:text-xl font-semibold text-foreground;
+    @apply text-lg sm:text-xl font-heading font-semibold text-foreground;
   }
 
   .text-body {
-    @apply text-base text-muted-foreground leading-relaxed;
+    @apply text-base font-inter text-muted-foreground leading-relaxed;
   }
 
   .text-small {
-    @apply text-sm text-muted-foreground;
+    @apply text-sm font-inter text-muted-foreground;
+  }
+
+  /* Racing-specific Effects */
+  .neon-glow {
+    text-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary)), 0 0 15px hsl(var(--primary));
+  }
+
+  .racing-border {
+    border: 1px solid hsl(var(--primary));
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3);
   }
 
   /* Interactive States */
@@ -91,9 +103,9 @@
     color: hsl(var(--footer-muted));
   }
 
-  /* Gradient Utilities */
+  /* Gradient Utilities - PolyTrack Racing Theme */
   .gradient-game {
-    /* Heroic sweep from crimson to sunlit sand */
+    /* Racing sweep from electric blue to cyan */
     background: linear-gradient(
       135deg,
       hsl(var(--primary)) 0%,
@@ -102,48 +114,48 @@
   }
 
   .gradient-soft {
-    /* Subtle surface wash for sections/cards */
+    /* Subtle tech surface wash */
     background: linear-gradient(
       135deg,
-      hsl(52 70% 96%) 0%,
-      hsl(52 60% 92%) 100%
+      hsl(220 25% 12%) 0%,
+      hsl(220 30% 15%) 100%
     );
   }
 
-  /* EXTRA gradients you can use anywhere */
+  /* EXTRA gradients - PolyTrack Style */
   .gradient-hero {
-    /* layered: deep indigo vignette + crimson→sand sweep */
+    /* Deep space racing backdrop with electric blue sweep */
     background:
-      radial-gradient(120% 160% at 0% 0%, hsl(253 29% 19%) 0%, transparent 45%),
-      linear-gradient(135deg, hsl(358 99% 59%) 0%, hsl(52 70% 82%) 100%);
+      radial-gradient(120% 160% at 0% 0%, hsl(220 30% 8%) 0%, transparent 45%),
+      linear-gradient(135deg, hsl(200 100% 40%) 0%, hsl(180 100% 35%) 100%);
   }
 
-  .gradient-emerald {
-    /* emerald play vibe with subtle light */
+  .gradient-neon {
+    /* Neon racing glow effect */
     background: linear-gradient(
       135deg,
-      hsl(158 74% 37%) 0%,
-      hsl(158 60% 55%) 60%,
-      hsl(52 70% 90%) 100%
+      hsl(195 100% 50%) 0%,
+      hsl(210 100% 60%) 60%,
+      hsl(180 100% 40%) 100%
     );
   }
 
   .gradient-card {
-    /* card highlight using indigo→sand for depth */
+    /* Racing card with blue tech depth */
     background: linear-gradient(
       180deg,
-      hsl(253 29% 22%) 0%,
-      hsl(253 29% 18%) 30%,
-      hsl(52 70% 16% / 12%) 100%
+      hsl(220 30% 18%) 0%,
+      hsl(220 35% 14%) 30%,
+      hsl(220 40% 10%) 100%
     );
   }
 
   .gradient-cta {
-    /* punchy CTA: crimson→gold */
+    /* Electric racing CTA: bright blue to cyan */
     background: linear-gradient(
       135deg,
-      hsl(358 99% 59%) 0%,
-      hsl(28 95% 60%) 100%
+      hsl(195 100% 50%) 0%,
+      hsl(180 100% 45%) 100%
     );
   }
 }
@@ -231,76 +243,76 @@
 /* Theme variables will be managed through Tailwind config */
 
 :root {
-  /* Light Theme — inspired by game palette */
-  --background: 52 70% 97%; /* soft sand wash */
-  --foreground: 253 29% 16%; /* deep indigo ink */
+  /* PolyTrack Racing Theme — inspired by futuristic racing */
+  --background: 220 30% 8%; /* deep space racing background */
+  --foreground: 200 20% 95%; /* bright tech white */
 
-  /* Visible Smooth Background Gradients */
+  /* Racing Background Gradients */
   --bg-header: linear-gradient(
     135deg,
-    hsl(51, 72%, 94%) 0%,
-    hsl(52 60% 92%) 100%
+    hsl(220, 35%, 12%) 0%,
+    hsl(220 40% 15%) 100%
   );
-  --bg-body: linear-gradient(135deg, hsl(52 68% 98%) 0%, hsl(52 58% 95%) 100%);
+  --bg-body: linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(220 35% 12%) 100%);
 
-  /* Dark Footer System */
-  --footer-bg: 253 29% 12%; /* deep indigo */
-  --footer-foreground: 220 15% 88%;
-  --footer-muted: 220 10% 65%;
+  /* Dark Racing Footer System */
+  --footer-bg: 220 40% 6%; /* deeper racing dark */
+  --footer-foreground: 200 15% 85%;
+  --footer-muted: 200 10% 60%;
 
-  /* Card & Surface System */
-  --card: 0 0% 100%;
-  --card-foreground: 253 29% 16%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 253 29% 16%;
+  /* Card & Surface System - Racing Tech */
+  --card: 220 30% 12%;
+  --card-foreground: 200 20% 95%;
+  --popover: 220 30% 12%;
+  --popover-foreground: 200 20% 95%;
 
-  /* Brand / Accents */
-  --primary: 358 99% 59%; /* FE3139 — crimson */
-  --primary-foreground: 0 0% 100%;
-  --primary-hover: 358 90% 52%;
-  --primary-light: 358 95% 92%;
+  /* Brand / Accents - Electric Blue Racing */
+  --primary: 195 100% 50%; /* Electric racing blue */
+  --primary-foreground: 220 30% 8%;
+  --primary-hover: 195 100% 45%;
+  --primary-light: 195 100% 85%;
 
-  --secondary: 52 70% 92%; /* sand tint */
-  --secondary-foreground: 52 40% 22%;
-  --secondary-hover: 52 70% 88%;
+  --secondary: 220 25% 18%; /* dark tech surface */
+  --secondary-foreground: 200 15% 85%;
+  --secondary-hover: 220 25% 22%;
 
-  /* Success / Play */
-  --success: 158 45% 90%; /* emerald tint */
-  --success-foreground: 158 60% 22%;
-  --success-bright: 158 74% 37%; /* 19A472 core */
+  /* Success / Play - Neon Cyan */
+  --success: 180 100% 25%; /* cyan tint */
+  --success-foreground: 0 0% 100%;
+  --success-bright: 180 100% 40%; /* bright neon cyan */
 
-  /* Neutrals */
-  --muted: 252 15% 94%;
-  --muted-foreground: 252 10% 42%;
-  --muted-dark: 252 14% 86%;
+  /* Neutrals - Racing Tech */
+  --muted: 220 20% 15%;
+  --muted-foreground: 200 10% 65%;
+  --muted-dark: 220 25% 10%;
 
-  /* Accent (golden highlight from sand) */
-  --accent: 52 80% 90%;
-  --accent-foreground: 40 70% 22%;
-  --accent-bright: 52 70% 82%; /* F1E8B1 */
+  /* Accent (neon highlight) */
+  --accent: 180 100% 30%;
+  --accent-foreground: 0 0% 100%;
+  --accent-bright: 180 100% 45%; /* bright neon cyan */
 
-  /* Warning & Error */
-  --warning: 46 100% 88%;
-  --warning-foreground: 30 95% 22%;
-  --destructive: 358 99% 95%;
-  --destructive-foreground: 358 80% 34%;
+  /* Warning & Error - Racing Orange/Red */
+  --warning: 30 100% 25%;
+  --warning-foreground: 0 0% 100%;
+  --destructive: 0 100% 25%;
+  --destructive-foreground: 0 0% 100%;
 
-  /* Star Rating System */
-  --star: 28 95% 60%; /* warm gold/amber color */
-  --star-foreground: 0 0% 100%;
+  /* Star Rating System - Racing Gold */
+  --star: 45 100% 50%; /* racing gold */
+  --star-foreground: 220 30% 8%;
 
-  /* Border & Input System */
-  --border: 48 20% 82%;
-  --border-strong: 48 22% 72%;
-  --input: 52 40% 97%;
-  --input-border: 48 20% 80%;
-  --ring: 253 29% 16%; /* dark indigo focus ring */
+  /* Border & Input System - Tech Blue */
+  --border: 220 25% 20%;
+  --border-strong: 220 30% 25%;
+  --input: 220 30% 10%;
+  --input-border: 220 25% 20%;
+  --ring: 195 100% 50%; /* electric blue focus ring */
 
-  /* Game-specific Colors */
-  --game-card: 52 70% 97%; /* sand paper */
-  --game-card-hover: 52 70% 94%;
-  --play-button: 158 74% 37%; /* emerald play */
-  --play-button-hover: 158 70% 33%;
+  /* Game-specific Colors - Racing Theme */
+  --game-card: 220 30% 12%; /* racing tech surface */
+  --game-card-hover: 220 30% 15%;
+  --play-button: 195 100% 50%; /* electric blue play */
+  --play-button-hover: 195 100% 45%;
 
   /* Layout & Spacing */
   --radius: 0.75rem;
@@ -318,45 +330,45 @@
 }
 
 .dark {
-  /* Deep Game Dark — anchored by 29233F */
-  --background: 253 29% 10%;
-  --foreground: 52 40% 94%;
+  /* Ultra Dark Racing Mode — even deeper space */
+  --background: 220 40% 4%;
+  --foreground: 200 25% 98%;
 
-  --card: 253 29% 14%;
-  --card-foreground: 52 40% 94%;
-  --popover: 253 29% 14%;
-  --popover-foreground: 52 40% 94%;
+  --card: 220 35% 8%;
+  --card-foreground: 200 25% 98%;
+  --popover: 220 35% 8%;
+  --popover-foreground: 200 25% 98%;
 
-  /* Keep brand punchy in dark */
-  --primary: 358 95% 58%;
-  --primary-foreground: 0 0% 100%;
+  /* Enhanced neon in ultra dark */
+  --primary: 195 100% 55%;
+  --primary-foreground: 220 40% 4%;
 
-  --secondary: 253 22% 18%;
-  --secondary-foreground: 52 60% 92%;
+  --secondary: 220 30% 12%;
+  --secondary-foreground: 200 20% 90%;
 
-  --muted: 253 20% 18%;
-  --muted-foreground: 52 20% 76%;
+  --muted: 220 25% 10%;
+  --muted-foreground: 200 15% 70%;
 
-  --accent: 52 70% 28%;
-  --accent-foreground: 52 80% 86%;
+  --accent: 180 100% 35%;
+  --accent-foreground: 0 0% 100%;
 
-  --destructive: 358 80% 44%;
+  --destructive: 0 100% 50%;
   --destructive-foreground: 0 0% 100%;
 
-  /* Star Rating System - Dark Mode */
-  --star: 28 95% 65%; /* slightly brighter gold for dark mode */
-  --star-foreground: 253 29% 10%;
+  /* Star Rating System - Enhanced Racing Gold */
+  --star: 45 100% 55%;
+  --star-foreground: 220 40% 4%;
 
-  --border: 253 18% 24%;
-  --input: 253 18% 24%;
-  --ring: 52 40% 70%;
+  --border: 220 30% 18%;
+  --input: 220 30% 18%;
+  --ring: 195 100% 55%;
 
-  /* Optional chart hues retained */
-  --chart-1: 220 70% 50%;
-  --chart-2: 160 60% 45%;
-  --chart-3: 30 80% 55%;
-  --chart-4: 280 65% 60%;
-  --chart-5: 340 75% 55%;
+  /* Racing chart colors */
+  --chart-1: 195 100% 50%;
+  --chart-2: 180 100% 45%;
+  --chart-3: 210 100% 55%;
+  --chart-4: 170 100% 40%;
+  --chart-5: 200 100% 45%;
 }
 
 @layer base {
@@ -365,7 +377,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-nunito), system-ui, sans-serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
@@ -373,17 +385,18 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Typography improvements */
+  /* Typography improvements - Racing Theme */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: var(--font-nunito), system-ui, sans-serif;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+    font-family: var(--font-orbitron), system-ui, sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
   }
 
   /* Removed focus ring - no outline on selection */

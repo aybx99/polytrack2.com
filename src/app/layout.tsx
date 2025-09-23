@@ -1,14 +1,22 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Nunito } from 'next/font/google';
+import { Orbitron, Inter } from 'next/font/google';
 import { MetadataGenerator } from '@/lib/seo';
 
-// Configure Nunito font
-const nunito = Nunito({
+// Configure Orbitron for futuristic racing headings
+const orbitron = Orbitron({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-nunito',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-orbitron',
+});
+
+// Configure Inter for clean modern body text
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
 });
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -26,7 +34,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" data-scroll-behavior="smooth">
-      <body className={`min-h-screen flex flex-col bg-body ${nunito.variable}`}>
+      <body
+        className={`min-h-screen flex flex-col bg-body ${orbitron.variable} ${inter.variable}`}
+      >
         {/* [ANCHOR: web-vitals] */}
         <WebVitals />
 

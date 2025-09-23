@@ -8,10 +8,12 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // Font System
+      // Font System - Racing Theme
       fontFamily: {
-        sans: ['var(--font-nunito)', 'system-ui', 'sans-serif'],
-        nunito: ['var(--font-nunito)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-orbitron)', 'system-ui', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'system-ui', 'sans-serif'],
+        inter: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
 
       // Typography Scale

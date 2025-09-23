@@ -51,8 +51,8 @@ export const siteConfig: SiteConfiguration = {
 
   branding: {
     logoPath: '/images/logo.png',
-    logoAlt: 'Site Logo',
-    color: '#FE2E36',
+    logoAlt: 'Polytrack Logo',
+    color: '#00BFFF', // Electric racing blue to match PolyTrack theme
   },
 
   contact: {
