@@ -19,7 +19,7 @@ const API_CONFIG = {
   endpoint: process.env.NEXT_PUBLIC_WP_GRAPHQL_URL!,
   timeout: 10000,
   retries: 3,
-  defaultCacheTtl: 3600,
+  defaultCacheTtl: 31536000,
 } as const;
 
 class ErrorFactory {
