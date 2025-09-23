@@ -2,6 +2,30 @@
 
 All notable changes to this project are documented here.
 
+## [2025-09-23] - Template Migration from Shady Bears to Polytrack
+
+### Changed
+
+- Updated main game configuration from 'shady-bears' to 'polytrack' in games.config.ts
+- Changed game display name from 'Shady Bears' to 'Polytrack'
+- Updated thumbnail and OG image paths to use polytrack images
+- Removed secondary games array (empty for polytrack project)
+- Changed site configuration in site.config.ts:
+  - Site name: 'Shady Bears' → 'Polytrack'
+  - Site URL: 'https://shadybears.io' → 'https://polytrack2.com'
+  - Default title: 'Shady Bears - Play Now' → 'Polytrack - Play Now'
+  - Default description updated to reference Polytrack game
+  - Contact email: 'support@shadybears.io' → 'support@polytrack2.com'
+- Updated environment configuration (.env.local):
+  - PRIMARY_SITE_URL: 'https://shadybears.io' → 'https://polytrack2.com'
+
+### Technical Notes
+
+- All TypeScript type checking passed successfully
+- All ESLint linting passed with no warnings or errors
+- Configuration migration maintains full backward compatibility with existing template structure
+- Image assets for polytrack already present in public/images/ directory
+
 ## [2025-09-20] - Complete I18n to English-Only Strings Config Migration
 
 ### Added

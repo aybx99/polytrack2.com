@@ -41,11 +41,11 @@ export interface SiteConfiguration {
 
 export const siteConfig: SiteConfiguration = {
   seo: {
-    siteName: 'Shady Bears',
-    siteUrl: process.env.PRIMARY_SITE_URL || 'https://shadybears.io',
-    defaultTitle: 'Shady Bears - Play Now',
+    siteName: 'Polytrack',
+    siteUrl: process.env.PRIMARY_SITE_URL || 'https://polytrack2.com',
+    defaultTitle: 'Polytrack - Play Now',
     defaultDescription:
-      'Discover and play Shady Bears game instantly in your browser. No downloads required - just click and play!',
+      'Discover and play Polytrack game instantly in your browser. No downloads required - just click and play!',
     defaultLocale: 'en',
   },
 
@@ -56,7 +56,7 @@ export const siteConfig: SiteConfiguration = {
   },
 
   contact: {
-    email: 'support@shadybears.io',
+    email: 'support@polytrack2.com',
     responseTimeHours: 24,
     businessDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     timezone: 'UTC',

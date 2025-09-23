@@ -53,24 +53,15 @@ export interface GamesConfiguration {
  */
 export const gamesConfig: GamesConfiguration = {
   mainGame: {
-    slug: 'shady-bears',
-    displayName: 'Shady Bears',
+    slug: 'polytrack',
+    displayName: 'Polytrack',
     isActive: true,
-    thumbnail: '/images/shady-bears-thumbnail.jpg',
-    ogImage: '/images/shady-bears-og.jpg',
+    thumbnail: '/images/polytrack-thumbnail.jpg',
+    ogImage: '/images/polytrack-og.jpg',
     priority: 1,
   },
 
-  secondaryGames: [
-    {
-      slug: 'fixing-time',
-      displayName: 'Fixing Time',
-      isActive: true,
-      thumbnail: '/images/fixing-time-thumbnail.jpg',
-      ogImage: '/images/fixing-time-og.jpg',
-      priority: 2,
-    },
-  ],
+  secondaryGames: [],
 
   settings: {
     maxSecondaryGames: 4,
