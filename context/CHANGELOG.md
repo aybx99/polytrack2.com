@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here.
 
+## [2025-09-24] - Text Visibility Fixes
+
+### Fixed
+
+- Fixed dark <strong> elements visibility by adding className="text-foreground" to ensure proper text contrast
+- Applied fix across all legal pages: DMCA, Privacy Policy, and Terms of Service
+- Corrected 11 instances of invisible strong text elements in contact information and section headers
+
 ## [2025-09-23] - Complete PolyTrack Theme Integration
 
 ### Changed

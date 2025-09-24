@@ -70,42 +70,53 @@ export default async function DMCAPage() {
               </p>
               <ol className="list-decimal pl-6 text-muted-foreground mb-6 space-y-4">
                 <li>
-                  <strong>Your Signature:</strong> Your physical or electronic
-                  signature, as the owner of an exclusive right that is
-                  allegedly infringed, or as an authorized representative of
-                  such an owner.
+                  <strong className="text-foreground">Your Signature:</strong>{' '}
+                  Your physical or electronic signature, as the owner of an
+                  exclusive right that is allegedly infringed, or as an
+                  authorized representative of such an owner.
                 </li>
                 <li>
-                  <strong>Identification of Copyrighted Work:</strong>{' '}
+                  <strong className="text-foreground">
+                    Identification of Copyrighted Work:
+                  </strong>{' '}
                   Identification of the copyrighted work that you claim has been
                   infringed, or, if there are multiple copyrighted works at a
                   single online site that are covered by a single notification,
                   a representative list of such works at that site.
                 </li>
                 <li>
-                  <strong>Identification of Infringing Material:</strong>{' '}
+                  <strong className="text-foreground">
+                    Identification of Infringing Material:
+                  </strong>{' '}
                   Identification of the material that you claim is infringing or
                   is the subject of infringing activity and that should be
                   removed or disabled, as well as information reasonably
                   sufficient to permit us to locate the material.
                 </li>
                 <li>
-                  <strong>Contact Information:</strong> Information reasonably
-                  sufficient to permit us to contact you, such as your address,
-                  telephone number, and email address if available.
+                  <strong className="text-foreground">
+                    Contact Information:
+                  </strong>{' '}
+                  Information reasonably sufficient to permit us to contact you,
+                  such as your address, telephone number, and email address if
+                  available.
                 </li>
                 <li>
-                  <strong>Good Faith Statement:</strong> A statement that you
-                  have a good faith belief that use of the material in the
-                  manner complained of is not authorized by the copyright owner,
-                  its agent, or the law.
+                  <strong className="text-foreground">
+                    Good Faith Statement:
+                  </strong>{' '}
+                  A statement that you have a good faith belief that use of the
+                  material in the manner complained of is not authorized by the
+                  copyright owner, its agent, or the law.
                 </li>
                 <li>
-                  <strong>Accuracy Statement:</strong> A statement that the
-                  information in your notification is accurate and, under
-                  penalty of perjury, that you are the owner of an exclusive
-                  right that is allegedly infringed or are authorized to act on
-                  behalf of such owner.
+                  <strong className="text-foreground">
+                    Accuracy Statement:
+                  </strong>{' '}
+                  A statement that the information in your notification is
+                  accurate and, under penalty of perjury, that you are the owner
+                  of an exclusive right that is allegedly infringed or are
+                  authorized to act on behalf of such owner.
                 </li>
               </ol>
             </section>
@@ -133,9 +144,11 @@ export default async function DMCAPage() {
               </p>
               <div className="bg-secondary p-4 rounded-lg">
                 <p className="text-muted-foreground">
-                  <strong>Email:</strong> {contactEmail}
+                  <strong className="text-foreground">Email:</strong>{' '}
+                  {contactEmail}
                   <br />
-                  <strong>Subject:</strong> DMCA Notice
+                  <strong className="text-foreground">Subject:</strong> DMCA
+                  Notice
                 </p>
               </div>
             </section>

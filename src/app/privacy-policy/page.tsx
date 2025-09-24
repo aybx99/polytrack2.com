@@ -246,9 +246,11 @@ export default async function PrivacyPolicyPage() {
               </p>
               <div className="bg-secondary p-4 rounded-lg">
                 <p className="text-muted-foreground">
-                  <strong>Email:</strong> {contactEmail}
+                  <strong className="text-foreground">Email:</strong>{' '}
+                  {contactEmail}
                   <br />
-                  <strong>Subject:</strong> Privacy Policy Inquiry
+                  <strong className="text-foreground">Subject:</strong> Privacy
+                  Policy Inquiry
                 </p>
               </div>
             </section>
